@@ -5,11 +5,9 @@ import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import java.util.Scanner;
 
 public class Main {
-	final static int FR_YRS = 4;
+	final static int FR_YRS = 4; //константы для метода 8
 	final static int HNDRD_YRS = 100;
 	final static int FR_HNDRDS_OF_YRS = 400;
-	static Scanner num = new Scanner (System.in);//объект ввода для пункта 8.3
-	final static int numOfYear = num.nextInt();//переменна, принимающая значение от ввода.
 
 	public static void main(String[] args) {
 
@@ -51,12 +49,11 @@ public class Main {
 		System.out.println(yearNum1);     // а также его переменная.
 		String yearNum2 = yearCheck2(8);// переменная и вызов 8.2 пункта,
 		System.out.println(yearNum2);     // а также его переменная.
-		System.out.println("Введите год:");
-		String yearNum3 = yearCheck3();
-		System.out.println(yearNum3);
+		String yearNum3 = yearCheck3(); //вызов метода 8.3
+		System.out.println(yearNum3);  //и вывод его переменной.
 
 	}
-	private static float equation (float a, float b, float c, float d) { // метод пункта 3 (долго разбирался, как вывести return на экран, потому что не понимал, куда return 'вовзращает' результат)0
+	private static float equation (float a, float b, float c, float d) { // метод пункта 3
 		return (a*(b+(c/d)));
 
 	}
@@ -108,12 +105,18 @@ public class Main {
 		else
 			return ("Год не високосный, говорит нам метод 8.2");}
 
-	private static String yearCheck3 (){
-		if ((numOfYear%FR_HNDRDS_OF_YRS)==0){
+	private static String yearCheck3 (){//метод пункта 8.3 (пользователь сам вводит год, а метод определяет, високосный или нет)
+		int fourYears = 4;
+		int hundredYears = 100;
+		int fourHundredYears = 400;
+		Scanner num = new Scanner (System.in);//объект ввода для пункта 8.3
+		System.out.println("Введите год: ");
+		int numOfYear = num.nextInt();//переменна, принимающая значение от ввода.
+		if ((numOfYear%fourHundredYears)==0){
 			return ("Год високосный, говорит нам метод 8.3");}
-		else if (numOfYear%HNDRD_YRS==0)
+		else if (numOfYear%hundredYears==0)
 			return ("Год не високосный, говорит нам метод 8.3");
-		else if (numOfYear%FR_YRS==0)
+		else if (numOfYear%fourYears==0)
 			return("Год високосный, говорит нам метод 8.3");
 		else
 			return ("Год не високосный, говорит нам метод 8.3");}
